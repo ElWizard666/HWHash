@@ -22,11 +22,11 @@ A tiny, singleton (static) class that reads HWInfo Shared Memory and packs it to
 - Exports an ordered list in the same order as HWInfo UI
 - Exports to a JSON string
 - Exports a minified List or JSON strong
-*check the minified struct version below.*
----
+**check the minified struct version below.*
+
 Installation
 ---
-Nuget build is available
+Nuget package is available:
 ```c#
 NuGet\Install-Package HWHash -Version 1.1.0
 ```
@@ -52,7 +52,7 @@ There are three startup options for HWHash.
 ---
 How to configure
 ---
-
+*Make sure you set the parameters **before** Lauching the HWHash thread.*
 High Precision:
 ```c#
 HWHash.HighPrecision = true;
@@ -68,7 +68,7 @@ Delay:
 HWHash.SetDelay(500);
 ```
 
-Then -> Launch():
+Then -> ```Launch()```
 ```c#
 HWHash.HighPrecision = true;
 HWHash.HighPriority = true;
