@@ -5,7 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <SignAssembly>True</SignAssembly>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>HWHash - HWInfo data to Dictionary</Title>
     <Authors>$(AssemblyName) - DLain</Authors>
     <Description>HWHash is a static class that grabs HWInfo sensor information and saves it to a Dictionary so it can be easily read and upload to InfluxDB or any other application you may deem useful.</Description>
@@ -16,8 +15,19 @@
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageIcon>HWLogo.png</PackageIcon>
     <PackageProjectUrl>https://divinelain.com</PackageProjectUrl>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
-    <BaseOutputPath>A:\Github\HWBUILD</BaseOutputPath>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>    
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Copyright>Everyone but the Author</Copyright>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Deterministic>True</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Deterministic>True</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
