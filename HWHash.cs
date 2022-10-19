@@ -70,7 +70,7 @@ public class HWHash
 
         CoreThread.Start();
 
-
+        
 
         return true;
     }
