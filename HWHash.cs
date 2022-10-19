@@ -64,15 +64,9 @@ public class HWHash
 
         CoreThread = new Thread(TimedStart);
 
-        if (HighPriority == true)
-        {
-            CoreThread.Priority = ThreadPriority.Highest;
-        }
+        if (HighPriority == true) { CoreThread.Priority = ThreadPriority.Highest; }
 
-        if (HighPrecision == true)
-        {
-            _ = WinApi.TimeBeginPeriod(1);
-        }
+        if (HighPrecision == true) { _ = WinApi.TimeBeginPeriod(1); }
 
         CoreThread.Start();
 
@@ -304,7 +298,7 @@ public class HWHash
     /// <returns></returns>
     public static string GetJsonStringMini(bool Order = false)
     {
-        if(Order == true)
+        if (Order == true)
         {
             return JsonSerializer.Serialize(SENSORHASH_MINI.Values.OrderBy(x => x.IndexOrder).ToList());
         }
@@ -347,7 +341,7 @@ public class HWHash
         public string NameCustom { get; set; }
         public string Unit { get; set; }
         public double ValueNow { get; set; }
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public int IndexOrder { get; set; }
     }
 
@@ -436,7 +430,7 @@ public class HWHash
     }
 
 
-   
+
     private static class WinApi
     {
         /// <summary>TimeBeginPeriod(). See the Windows API documentation for details.</summary>
