@@ -54,6 +54,7 @@ There are three startup options for HWHash.
 How to configure
 ---
 *Make sure you set the parameters **before** Lauching the HWHash thread.*
+
 High Precision:
 ```c#
 HWHash.HighPrecision = true;
