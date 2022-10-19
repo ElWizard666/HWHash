@@ -80,20 +80,20 @@ Basic Functions
 ---
 ```c#
 //Returns a List<HWINFO_HASH> in the same order as HWInfo UI
-List<HWINFO_HASH> MyHWHashList = HWHash.GetOrderedList()
+List<HWINFO_HASH> MyHWHashList = HWHash.GetOrderedList();
 //Same as above but in a minified version
-List<HWINFO_HASH_MINI> MyHWHashListMini = HWHash.GetOrderedListMini()
+List<HWINFO_HASH_MINI> MyHWHashListMini = HWHash.GetOrderedListMini();
 ```
 JSON Functions
 ---
 ```c#
 //Returns a JSON string containing all sensors information (full/mini)
-string _HWHashJson = HWHash.GetJsonString()
-string _HWHashJsonMini = HWHash.GetJsonStringMini()
+string _HWHashJson = HWHash.GetJsonString();
+string _HWHashJsonMini = HWHash.GetJsonStringMini();
 //If set to true, it will return a ordered list*
-string _HWHashJsonOrdered = HWHash.GetJsonString(true)
+string _HWHashJsonOrdered = HWHash.GetJsonString(true);
 //Same for the minified version
-string _HWHashJsonMiniOrdered HWHash.GetJsonStringMini(true)
+string _HWHashJsonMiniOrdered HWHash.GetJsonStringMini(true);
 ```
 Default Struct
 ---
