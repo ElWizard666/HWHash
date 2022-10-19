@@ -130,7 +130,7 @@ public struct HWINFO_HASH_MINI
         public string NameCustom { get; set; }
         public string Unit { get; set; }
         public double ValueNow { get; set; }
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public int IndexOrder { get; set; }
     }
 ```
