@@ -93,7 +93,7 @@ string _HWHashJsonMini = HWHash.GetJsonStringMini();
 //If set to true, it will return a ordered list*
 string _HWHashJsonOrdered = HWHash.GetJsonString(true);
 //Same for the minified version
-string _HWHashJsonMiniOrdered HWHash.GetJsonStringMini(true);
+string _HWHashJsonMiniOrdered = HWHash.GetJsonStringMini(true);
 ```
 Default Struct
 ---
