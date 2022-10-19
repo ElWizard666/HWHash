@@ -1,3 +1,4 @@
+
 # HWHash
 ## _Grab all HWInfo realtime sensor information via shared memory and updates them directly to a easily accessible Dictionary._
 [![N|Solid](https://i.imgur.com/EyqeszJ.png)](https://divinelain.com)
@@ -20,8 +21,16 @@ A tiny, singleton (static) class that reads HWInfo Shared Memory and packs it to
 - Hashes both the Sensor's Original name and the User Defined name
 - Exports an ordered list in the same order as HWInfo UI
 - Exports to a JSON string
-
+- Exports a minified List or JSON strong
+*check the minified struct version below.*
 ---
+Installation
+---
+Nuget build is available
+```c#
+NuGet\Install-Package HWHash -Version 1.1.0
+```
+
 Usage
 ---
 
@@ -66,7 +75,64 @@ HWHash.HighPriority = true;
 HWHash.SetDelay(500);
 HWHash.Launch();
 ```
-
+---
+Basic Functions
+---
+```c#
+//Returns a List<HWINFO_HASH> in the same order as HWInfo UI
+HWHash.GetOrderedList()
+//Same as above but in a minified version
+HWHash.GetOrderedListMini()
+```
+JSON Functions
+---
+```c#
+//Returns a JSON string containing all sensors information
+HWHash.GetJsonString()
+//If set to true, it will return a ordered list*
+HWHash.GetJsonString(true)
+//Same for the minified version
+HWHash.GetJsonStringMini(true)
+```
+Default Struct
+---
+This is the base struct, it contains all HWInfo sensor data, such as min, max and avg values.
+```c#
+ public struct HWINFO_HASH
+    {
+        public string ReadingType { get; set; }
+        public uint SensorIndex { get; set; }
+        public uint SensorID { get; set; }
+        public ulong UniqueID { get; set; }
+        public string NameDefault { get; set; }
+        public string NameCustom { get; set; }
+        public string Unit { get; set; }
+        public double ValueNow { get; set; }
+        public double ValueMin { get; set; }
+        public double ValueMax { get; set; }
+        public double ValueAvg { get; set; }
+        public string ParentNameDefault { get; set; }
+        public string ParentNameCustom { get; set; }
+        public uint ParentID { get; set; }
+        public uint ParentInstance { get; set; }
+        public ulong ParentUniqueID { get; set; }
+        public int IndexOrder { get; set; }
+    }
+```
+Minified Struct
+---
+The minified version is more suitable for 'realtime' monitoring, since it is packed in a much smaller package.
+```c#
+public struct HWINFO_HASH_MINI
+    {
+        public ulong UniqueID { get; set; }
+        public string NameCustom { get; set; }
+        public string Unit { get; set; }
+        public double ValueNow { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public int IndexOrder { get; set; }
+    }
+```
 
 ### License
 This project is licensed under [GLWTPL](./LICENSE)
