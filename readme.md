@@ -29,7 +29,7 @@ Installation
 ---
 Nuget package is available:
 ```c#
-NuGet\Install-Package HWHash -Version 1.1.0
+NuGet\Install-Package HWHash -Version 1.2.0
 ```
 
 Usage
