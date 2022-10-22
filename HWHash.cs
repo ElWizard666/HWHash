@@ -69,8 +69,6 @@ using System.Timers;
 
             if (HighPrecision == true) { _ = WinApi.TimeBeginPeriod(1); }
 
-            //TimedStart();
-
             ReadSensors();
 
             CoreThread.Start();
@@ -194,20 +192,18 @@ using System.Timers;
             }
             else
             {
-
-                //global::System.Console.WriteLine(READING.Value);
-                //HWINFO_HASH THIS_ENTRY = SENSORHASH[UNIQUE_ID];
-               
                 HWINFO_HASH T = SENSORHASH[UNIQUE_ID];
                 T.ValueNow = READING.Value;
                 T.ValueMin = READING.ValueMin;
                 T.ValueMax = READING.ValueMax;
-                T.ValueAvg = READING.ValueAvg;
-
+                T.ValueAvg = READING.ValueAvg;                
+                //Update dictionary
                 SENSORHASH[UNIQUE_ID] = T;
 
+                            
                 HWINFO_HASH_MINI TMINI = SENSORHASH_MINI[UNIQUE_ID];
                 TMINI.ValueNow = READING.Value;
+                //Update dictionary (mini)
                 SENSORHASH_MINI[UNIQUE_ID] = TMINI;
             }
         }
