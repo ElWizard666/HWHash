@@ -1,6 +1,7 @@
 
 
 
+
 # HWHash
 ## _Grab all HWiNFO realtime sensor information via shared memory and updates them directly to a easily accessible Dictionary._
 [![N|Solid](https://i.imgur.com/EyqeszJ.png)](https://divinelain.com)
@@ -30,7 +31,7 @@ Installation
 ---
 Nuget package is available:
 ```c#
-NuGet\Install-Package HWHash -Version 1.2.0
+NuGet\Install-Package HWHash
 ```
 
 Usage
@@ -179,7 +180,7 @@ Usecase
 ---
 CruelMonitor was built using HWHash as its base class. Using C# as both the reader for HWiNFO shared memory and sharing via WebSocks and MessagePack to serve constant, 60FPS, realtime windows monitoring graphs on the desktop, high FPS and low CPU usage was the focus.
 <p align="center">
-  <img src="https://github.com/layer07/HWHash/blob/main/media/HWHashDemo.webp">
+  <img src="https://dev.divinelain.com/HWHashDemo.webp">
 </p>
 
 
