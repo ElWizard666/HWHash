@@ -20,7 +20,7 @@ A tiny, singleton (static) class that reads HWiNFO Shared Memory and packs it to
 
 ## Features
 
-- Unique ID for each sensor avoid duplicate name collision
+- Unique ID for each sensor avoid name collision
 - Compatible with all HWiNFO versions with Shared Memory Support
 - Collects "Parent Sensor" information such as Name, ID and Instance
 - Hashes both the Sensor's Original name and the User Defined name
@@ -173,9 +173,9 @@ Notes on Sensor Poll Rate
 ---
 This library relies on a third party application, which is HWiNFO, and HWiNFO relies on the exposed sensors from your hardware, such as motherboard sensors, CPU, GPU sensors, etc. 
 
-Usually sensor access/read is deadly fast (nanoseconds) and it is never a bottleneck. There are few rare examples, for instance, on my personal system I have 8 Corsair Memory sticks, and they have a temperature sensor on each stick, out of 359 different readings on my system, the DIMMs are the only ones who take more than nanoseconds to be read, in my case, HWiNFO takes around 6MS to poll the Memory Temperature from all chips. 
+Usually sensor access/read is deadly fast (nanoseconds) and it is never a bottleneck. There are few rare examples, for instance, on my personal system I am currently using Corsair Vengeance memory sticks, and each memory stick has a temperature sensor, out of 359 different readings on my system, the DIMMs are the only ones who take more than nanoseconds to be read, in my case, HWiNFO takes around 6MS to poll the Memory Temperature from all chips. 
 
-Since HWiNFO fastest "poll rate" is 100MS, it is not a problem, but it is definitely something that we should keep an eye upon when reading from sensors exposed by our hardware.
+Since HWiNFO fastest "poll rate" is 50MS, it is not a problem, but it is definitely something that we should keep an eye upon when reading from sensors exposed by our hardware.
 
 Usecase
 ---
@@ -200,8 +200,8 @@ To-do
 
 ### Added  💖
 - [x] JSON export with no third party libraries
-- [x] Add Min, max, average
-- [x] Store previous reading
+- [x] Add Min, Max, Average
+- [x] Store previous reading value
 
 ### License
 This project is licensed under [GLWTPL](./LICENSE)
