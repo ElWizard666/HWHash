@@ -179,7 +179,7 @@ Since HWiNFO fastest "poll rate" is 50MS, it is not a problem, but it is definit
 
 Usecase
 ---
-CruelMonitor was built using HWHash as its 'data provider.' CruelMonitor uses C# backend data source, it also serves as a WebSockets server to share the content in realtime, messages packed with MessagePack and are delivired with minimal delays.
+CruelMonitor was built using HWHash as its 'data provider.' CruelMonitor uses C# backend data source, it also serves as a WebSockets server to share the content in realtime, messages packed with MessagePack and are delivered with minimal delays.
 
 Performance metrics are drawed directly on the Windows Desktop, 60FPS, <1ms delay and low CPU usage.
 <p align="center">
@@ -191,7 +191,7 @@ To-do
 ---
 
 ### Lacking 👀
-- [ ] Server side interpolation
+- [ ] Smoothing/interpolation for values
 - [ ] Add the option to Flush to InfluxDB
 - [ ] Option to create triggers/alerts
 - [ ] Save presets and sensor preferences
