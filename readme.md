@@ -4,7 +4,7 @@
 
 
 # HWHash
-## _Grab all HWiNFO realtime sensor information via shared memory and updates them directly to a easily accessible Dictionary._
+## _HWHash Collects HWiNFO's sensor information in realtime, with shared memory support and writes/updates them directly to a easily accessible Dictionary._
 [![N|Solid](https://i.imgur.com/EyqeszJ.png)](https://divinelain.com)
 
 [![GLWTPL](https://img.shields.io/badge/GLWT-Public_License-red.svg)](https://github.com/me-shaon/GLWTPL)
