@@ -180,7 +180,7 @@ Usecase
 ---
 CruelMonitor was built using HWHash as its base class. Using C# as both the reader for HWiNFO shared memory and sharing via WebSocks and MessagePack to serve constant, 60FPS, realtime windows monitoring graphs on the desktop, high FPS and low CPU usage was the focus.
 <p align="center">
-  <img src="https://dev.divinelain.com/HWHashDemo.webp">
+  <img src="https://github.com/layer07/HWHash/blob/main/media/HWHashDemo.webp">
 </p>
 
 
