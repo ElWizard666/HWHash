@@ -191,7 +191,7 @@ To-do
 ---
 
 ### Lacking 👀
-- [ ] Server side interpolation
+- [ ] Add interpolation/Smoothing
 - [ ] Add the option to Flush to InfluxDB
 - [ ] Option to create triggers/alerts
 - [ ] Save presets and sensor preferences
