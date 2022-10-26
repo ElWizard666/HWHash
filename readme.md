@@ -2,6 +2,7 @@
 
 
 
+
 # HWHash
 ## _Grab all HWiNFO realtime sensor information via shared memory and updates them directly to a easily accessible Dictionary._
 [![N|Solid](https://i.imgur.com/EyqeszJ.png)](https://divinelain.com)
@@ -178,7 +179,7 @@ Since HWiNFO fastest "poll rate" is 100MS, it is not a problem, but it is defini
 
 Usecase
 ---
-CruelMonitor was built using HWHash as its base class. Using C# as both the reader for HWiNFO shared memory and sharing via WebSocks and MessagePack to serve constant, 60FPS, realtime windows monitoring graphs on the desktop, high FPS and low CPU usage was the focus.
+CruelMonitor was built using HWHash as its data provider. CruelMonitor was built using C# backend as the collector for HWiNFO and as a WebSockets server to share the content in realtime, packed with MessagePack. 60FPS, performance graphs are drawed directly on the Windows Desktop, 60 FPS, <1ms delay and low CPU usage.
 <p align="center">
   <img src="https://github.com/layer07/HWHash/blob/main/media/HWHashDemo.webp">
 </p>
