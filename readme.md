@@ -179,7 +179,9 @@ Since HWiNFO fastest "poll rate" is 100MS, it is not a problem, but it is defini
 
 Usecase
 ---
-CruelMonitor was built using HWHash as its data provider. CruelMonitor was built using C# backend as the collector for HWiNFO and as a WebSockets server to share the content in realtime, packed with MessagePack. 60FPS, performance graphs are drawed directly on the Windows Desktop, 60 FPS, <1ms delay and low CPU usage.
+CruelMonitor was built using HWHash as its data provider. CruelMonitor was built using C# backend as the collector for HWiNFO and as a WebSockets server to share the content in realtime, packed with MessagePack. 
+
+Performance metrics are drawed directly on the Windows Desktop, 60FPS, <1ms delay and low CPU usage.
 <p align="center">
   <img src="https://github.com/layer07/HWHash/blob/main/media/HWHashDemo.webp">
 </p>
