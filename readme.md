@@ -175,7 +175,7 @@ This library relies on a third party application, which is HWiNFO, and HWiNFO re
 
 Usually sensor access/read is deadly fast (nanoseconds) and it is never a bottleneck. There are few rare examples, for instance, on my personal system I am currently using Corsair Vengeance memory sticks, and each memory stick has a temperature sensor, out of 359 different readings on my system, the DIMMs are the only ones who take more than nanoseconds to be read, in my case, HWiNFO takes around 6MS to poll the Memory Temperature from all chips. 
 
-Since HWiNFO fastest "poll rate" is 50MS, it is not a problem, but it is definitely something that we should keep an eye upon when reading from sensors exposed by our hardware.
+Since HWiNFO fastest "poll rate" is 50MS, it is not a problem, but it is definitely something that we should keep an eye on when reading from sensors exposed by our hardware.
 
 Usecase
 ---
