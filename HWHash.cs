@@ -190,9 +190,6 @@ public class HWHash
                 IndexOrder = IndexOrder++
 
             };
-
-
-
             SENSORHASH.TryAdd(UNIQUE_ID, LastReading);
             SENSORHASH_MINI.TryAdd(UNIQUE_ID, LastReading_Mini);
         }
@@ -331,7 +328,7 @@ public class HWHash
         public uint TotalEntries { get; set; }
     }
 
-    public struct HWINFO_HASH
+    public record struct HWINFO_HASH
     {
         public string ReadingType { get; set; }
         public uint SensorIndex { get; set; }
@@ -353,7 +350,7 @@ public class HWHash
         public int IndexOrder { get; set; }
     }
 
-    public struct HWINFO_HASH_MINI
+    public record struct HWINFO_HASH_MINI
     {
         public ulong UniqueID { get; set; }
         public string NameCustom { get; set; }
