@@ -22,6 +22,7 @@ public class HWHash
     private static HWINFO_MEM HWINFO_MEMREGION;
 
     private static readonly Stopwatch SW = Stopwatch.StartNew();
+    
     private static HWHashStats SelfData;
 
     private static int IndexOrder = 0;
