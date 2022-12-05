@@ -1,8 +1,3 @@
-
-
-
-
-
 # HWHash
 ## _HWHash Collects HWiNFO's sensor information in realtime, via shared memory and writes them directly to a easily accessible Dictionary._
 [![N|Solid](https://i.imgur.com/EyqeszJ.png)](https://divinelain.com)
@@ -104,7 +99,7 @@ Default Struct
 ---
 This is the base struct, it contains all HWiNFO sensor data, such as min, max and avg values.
 ```c#
- public struct HWINFO_HASH
+ public record struct HWINFO_HASH
     {
         public string ReadingType { get; set; }
         public uint SensorIndex { get; set; }
@@ -129,7 +124,7 @@ Minified Struct
 ---
 The minified version is more suitable for 'realtime' monitoring, since it is packed in a much smaller package.
 ```c#
-public struct HWINFO_HASH_MINI
+public record struct HWINFO_HASH_MINI
     {
         public ulong UniqueID { get; set; }
         public string NameCustom { get; set; }
@@ -148,7 +143,7 @@ HWHashStats _Stats = HWHash.GetHWHashStats();
 ```
  HWHashStats *struct*
 ```c#
-public struct HWHashStats
+public record struct HWHashStats
     {
         public long CollectionTime { get; set; }
         public uint TotalCategories { get; set; }
