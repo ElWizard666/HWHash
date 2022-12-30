@@ -178,7 +178,7 @@ CruelMonitor was built using HWHash as its 'data provider.' CruelMonitor uses C#
 
 Performance metrics are drawed directly on the Windows Desktop, 60FPS, <1ms delay and low CPU usage.
 <p align="center">
-  <img src="https://github.com/layer07/HWHash/blob/main/media/HWHashDemo.webp">
+  <img src="https://github.com/layer07/HWHash/blob/main/media/HWHashDemo1.webp">
 </p>
 
 
