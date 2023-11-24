@@ -13,7 +13,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/layer07/HWHash</RepositoryUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <PackageIcon>HWLogo.png</PackageIcon>
+    <PackageIcon></PackageIcon>
     <PackageProjectUrl>https://divinelain.com</PackageProjectUrl>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>    
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
@@ -31,14 +31,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="C:\Users\Lain\Desktop\HWLogo.png">
+    <None Update="LICENSE">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="LICENSE">
+    <None Update="media\icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
