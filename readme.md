@@ -176,7 +176,7 @@ if ($Type -ne $null) {
 Result:
 
 <p align="center">
-  <img src="https://github.com/layer07/HWHash/blob/main/media/HWHashDemo1.webp">
+  <img src="https://github.com/layer07/HWHash/blob/main/media/PowerShell.webp">
 </p>
 
 
