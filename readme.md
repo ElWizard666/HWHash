@@ -1,3 +1,4 @@
+
 # HWHash
 ## _HWHash Collects HWiNFO's sensor information in realtime, via shared memory and writes them directly to a easily accessible Dictionary._
 [![N|Solid](https://i.imgur.com/EyqeszJ.png)](https://divinelain.com)
@@ -134,7 +135,51 @@ public record struct HWINFO_HASH_MINI
         public int IndexOrder { get; set; }
     }
 ```
+
+PowerShell Integration
 ---
+In case you want to invoke **HWHash** from **PowerShell**, it is possible to do so, follow the steps below:
+
+ - Ensure you have **PowerShell 7.0 or newer** [\[Here\]](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi)
+ - Download the latest release of **HWHash** DLL [\[Here\]](https://github.com/layer07/HWHash/releases/download/release/HWHash.dll)
+ - Create a test script with the code below
+
+```c#
+#Don't forget to change the line below
+$Path = "A:\GITHUB\HWHash\bin\Debug\net6.0\HWHash.dll"
+$ClassName = "HWHash"
+$MethodLaunch = "Launch"
+$MethodJsonStringMini = "GetJsonStringMini"
+
+Add-Type -Path $Path
+
+$Type = [System.Reflection.Assembly]::LoadFrom($Path).GetTypes() | Where-Object { $_.Name -eq $ClassName }
+
+if ($Type -ne $null) {
+    $Instance = [Activator]::CreateInstance($Type)
+    $Type.GetMethod($MethodLaunch).Invoke($Instance, $null)
+
+    function Get-JsonStringMini {
+        param (
+            [bool]$Order = $false
+        )
+
+        $result = $Type.GetMethod($MethodJsonStringMini).Invoke($Instance, @($Order))
+        Write-Host $result
+    }
+
+    Get-JsonStringMini -Order $true
+} else {
+    Write-Host "Type '$ClassName' not found in the assembly."
+}
+```
+Result:
+
+<p align="center">
+  <img src="https://github.com/layer07/HWHash/blob/main/media/HWHashDemo1.webp">
+</p>
+
+
 Performance
 ---
 You can access HWHash performance metrics by invoking the following method:
