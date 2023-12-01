@@ -5,18 +5,18 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Timers;
 
 
 
 
-namespace HWHash
-{
-    public class HWHash
+
+    public static class HWHash
     {
 
-        //Initially it was based on zipferot3000 implementation, but he was using NewtonsoftJSON which I avoid, so I modified it to use MsgPack
-        //Since most users are not familiar with MsgPack I am using the default serializer without external dependencies and some minor tweaks.
+        //Initially based on zipferot3000 implementation, but he was using NewtonsoftJSON which I avoid, so I modified it to use MsgPack
+        //Since most users are not familiar with MsgPack I am also using the default serializer without external dependencies and some minor tweaks.
 
 
         const string SHARED_MEM_PATH = "Global\\HWiNFO_SENS_SM2";
@@ -70,11 +70,19 @@ namespace HWHash
         public static bool Launch()
         {
 
+            bool HWINFO_PROCESS = IsHWInfoRunning();
+
+            if (!IsHWInfoRunning())
+            {                   
+                throw new InvalidOperationException("HWiNFO process not found. Please make sure HWiNFO is running.");
+            }
+
             bool HWINFO_RUNNING = ReadMem();
             if (HWINFO_RUNNING == false)
             {
                 return false;
             }
+            
             BuildHeaders();
 
             CoreThread = new Thread(TimedStart);
@@ -116,7 +124,7 @@ namespace HWHash
             catch (Exception)
             {
                 return false;
-                throw new InvalidOperationException("Cannot read HWINFO Shared Memory. Make sure that HWInfo is running and that you have admin privileges.");
+                throw new InvalidOperationException("Cannot read HWiNFO Shared Memory Stream. Make sure that HWiNFO.exe is running and that you have admin privileges.");
             }
         }
 
@@ -218,48 +226,29 @@ namespace HWHash
             }
         }
 
-        // This is quite dumb but I don't want to rewrite this code now, can definitely be improved, should ran against the Enum @ Reading time.
-        private static string TypeToString(SENSOR_READING_TYPE IN)
-        {
-            string OUT = "Unknown";
-            switch (IN)
-            {
-                case SENSOR_READING_TYPE.SENSOR_TYPE_NONE:
-                    OUT = "None";
-                    break;
-                case SENSOR_READING_TYPE.SENSOR_TYPE_TEMP:
-                    OUT = "Temperature";
-                    break;
-                case SENSOR_READING_TYPE.SENSOR_TYPE_VOLT:
-                    OUT = "Voltage";
-                    break;
-                case SENSOR_READING_TYPE.SENSOR_TYPE_FAN:
-                    OUT = "Fan";
-                    break;
-                case SENSOR_READING_TYPE.SENSOR_TYPE_CURRENT:
-                    OUT = "Current";
-                    break;
-                case SENSOR_READING_TYPE.SENSOR_TYPE_POWER:
-                    OUT = "Power";
-                    break;
-                case SENSOR_READING_TYPE.SENSOR_TYPE_CLOCK:
-                    OUT = "Frequency";
-                    break;
-                case SENSOR_READING_TYPE.SENSOR_TYPE_USAGE:
-                    OUT = "Usage";
-                    break;
-                case SENSOR_READING_TYPE.SENSOR_TYPE_OTHER:
-                    OUT = "Other";
-                    break;
-            }
+    private static string TypeToString(SENSOR_READING_TYPE type)
+    {
+        var typeMap = new Dictionary<SENSOR_READING_TYPE, string>
+    {
+        { SENSOR_READING_TYPE.SENSOR_TYPE_NONE, "None" },
+        { SENSOR_READING_TYPE.SENSOR_TYPE_TEMP, "Temperature" },
+        { SENSOR_READING_TYPE.SENSOR_TYPE_VOLT, "Voltage" },
+        { SENSOR_READING_TYPE.SENSOR_TYPE_FAN, "Fan" },
+        { SENSOR_READING_TYPE.SENSOR_TYPE_CURRENT, "Current" },
+        { SENSOR_READING_TYPE.SENSOR_TYPE_POWER, "Power" },
+        { SENSOR_READING_TYPE.SENSOR_TYPE_CLOCK, "Frequency" },
+        { SENSOR_READING_TYPE.SENSOR_TYPE_USAGE, "Usage" },
+        { SENSOR_READING_TYPE.SENSOR_TYPE_OTHER, "Other" },
+    };
 
-            return OUT;
-        }
-        /// <summary>
-        /// Get basic information about collection time (in milliseconds), total entries, etc...
-        /// </summary>
-        /// <returns>Returns a struct [HWHashStats] containing information about HWHash running thread.</returns>
-        public static HWHashStats GetHWHashStats()
+        return typeMap.TryGetValue(type, out var result) ? result : "Unknown";
+    }
+
+    /// <summary>
+    /// Get basic information about collection time (in milliseconds), total entries, etc...
+    /// </summary>
+    /// <returns>Returns a struct [HWHashStats] containing information about HWHash running thread.</returns>
+    public static HWHashStats GetHWHashStats()
         {
             return SelfData;
         }
@@ -453,7 +442,21 @@ namespace HWHash
             return 1000000000UL * a + b;
         }
 
+        private static bool IsHWInfoRunning()
+        {
+            Process[] processes = Process.GetProcesses();            
+            Regex regex = new Regex(@"hwinfo(?:32|64)?", RegexOptions.IgnoreCase);
 
+            foreach (Process process in processes)
+            {
+                if (regex.IsMatch(process.ProcessName))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         private static class WinApi
         {
@@ -476,4 +479,3 @@ namespace HWHash
 
     }
 
-}
