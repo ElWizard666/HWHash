@@ -144,7 +144,7 @@ In case you want to invoke **HWHash** from **PowerShell**, it is possible to do 
  - Download the latest release of **HWHash** DLL [\[Here\]](https://github.com/layer07/HWHash/releases/download/release/HWHash.dll)
  - Create a test script with the code below
 
-```c#
+```powershell
 #Don't forget to change the line below
 $Path = "A:\GITHUB\HWHash\bin\Debug\net6.0\HWHash.dll"
 $ClassName = "HWHash"
