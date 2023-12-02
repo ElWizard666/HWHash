@@ -124,7 +124,7 @@ using System.Timers;
             catch (Exception)
             {
                 return false;
-                throw new InvalidOperationException("Cannot read HWiNFO Shared Memory Stream. Make sure that HWiNFO.exe is running and that you have admin privileges.");
+                throw new InvalidOperationException("Cannot read HWiNFO Shared Memory Stream. Make sure that HWiNFO64.exe is running and that you have admin privileges.");
             }
         }
 
